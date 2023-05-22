@@ -1,11 +1,11 @@
 import { defineConfig } from "vite";
+import { readFileSync } from "node:fs";
 
-export default defineConfig(({command}) => ({
-  base: command === 'serve' ? '/' : '/pwa-test/',
+export default defineConfig(({ command }) => ({
   server: {
     https: {
-      // key: fs.readFileSync("keys/agent2-key.pem"),
-      // cert: fs.readFileSync("keys/agent2-cert.pem"),
+      key: readFileSync("./keys/agent2-key.pem"),
+      cert: readFileSync("./keys/agent2-cert.pem"),
     },
   },
 }));
